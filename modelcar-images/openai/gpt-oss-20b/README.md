@@ -22,7 +22,7 @@ podman run --rm --platform linux/amd64 \
 
 ```
 podman build modelcar-images/openai/gpt-oss-20b \
-    -t quay.io/redhat-ai-services/modelcar-catalog:gpt-oss-20b  \
+    -t quay.io/phison-hci/modelcar-catalog:gpt-oss-20b  \
     --platform linux/amd64
 ```
 

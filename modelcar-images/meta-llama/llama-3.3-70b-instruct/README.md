@@ -22,7 +22,7 @@ podman run --rm --platform linux/amd64 \
 
 ```
 podman build modelcar-images/meta-llama/llama-3.3-70b-instruct \
-    -t quay.io/redhat-ai-services/modelcar-catalog:llama-3.3-70b-instruct  \
+    -t quay.io/phison-hci/modelcar-catalog:llama-3.3-70b-instruct  \
     --platform linux/amd64
 ```
 
