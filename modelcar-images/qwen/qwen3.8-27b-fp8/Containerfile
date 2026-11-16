@@ -1,0 +1,23 @@
+FROM registry.access.redhat.com/ubi9/ubi-micro:9.8-1782840931
+
+# Copy the model files in multiple layers to avoid large image issues
+COPY models/*.json /models/
+COPY models/*.txt /models/
+COPY models/*.jinja /models/
+
+# The repo ships 64 per-layer shards (~0.38 GB each) instead of
+# model-0000X-of-0000N files, so group them by tens (~3.8 GB per layer)
+COPY models/layers-?.safetensors /models/
+COPY models/layers-1?.safetensors /models/
+COPY models/layers-2?.safetensors /models/
+COPY models/layers-3?.safetensors /models/
+COPY models/layers-4?.safetensors /models/
+COPY models/layers-5?.safetensors /models/
+COPY models/layers-6?.safetensors /models/
+
+# Non-layer weights: embeddings / lm_head / vision tower (~6 GB) and the MTP draft head
+COPY models/outside.safetensors /models/
+COPY models/mtp.safetensors /models/
+
+# Set the user to 1001
+USER 1001
